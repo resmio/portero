@@ -1,4 +1,5 @@
 import json
+from base64 import b64decode
 
 from django.contrib.auth import authenticate
 from django.http import HttpResponse, HttpResponseForbidden
@@ -7,7 +8,7 @@ from django.http import HttpResponse, HttpResponseForbidden
 def parse_basic_auth(auth_header):
     if auth_header.startswith('Basic '):
         base = auth_header[len('Basic '):]
-        decoded = base.decode('base64')
+        decoded = b64decode(base).decode('utf8')
         parts = decoded.split(':')
         user = parts.pop()
         password = ':'.join(parts)
