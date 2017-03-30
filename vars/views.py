@@ -8,7 +8,6 @@ def parse_basic_auth(auth_header):
     if auth_header.startswith('Basic '):
         base = auth_header[len('Basic '):]
         decoded = base.decode('base64')
-        print decoded
         parts = decoded.split(':')
         user = parts.pop()
         password = ':'.join(parts)
