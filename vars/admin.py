@@ -8,3 +8,4 @@ class VarAdmin(admin.ModelAdmin):
     search_fields = ['name', 'value', 'user__username']
     list_filter = ['owner', 'name']
     list_display = ['name', 'value', 'owner']
+    ordering = ['-owner__username', 'name']
